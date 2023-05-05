@@ -72,8 +72,7 @@ int pop(stack *s){
  }
 int postfixevaluation(char *postfix, stack *s){
     int i=0;
- 
-
+    
     while(postfix[i]!='\0'){
         if(!isOperator(postfix[i])){
             push(s,postfix[i]);

@@ -27,8 +27,10 @@ int main(){
     s->a=(char *)malloc(s->size*sizeof(char));
     s->top=-1;
 
-    char infix[100]="A+B*C";
-    printf("%s is the postfix expression", infixtopostfix(infix, s));
+     char infix[100];
+    printf("enter the infix Expression");
+    scanf("%s",infix);
+    printf("%s is the postfix expression of %s", infixtopostfix(infix, s),infix);
 
     return 0;
 
