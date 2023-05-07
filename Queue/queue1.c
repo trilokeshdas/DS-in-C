@@ -16,7 +16,7 @@ void display(queue *q);
 
 int main(){
     queue *q=(queue *)malloc(sizeof(queue));
-    q->size=5;
+    q->size=5; // take the size as the no. of times we will enqueue
     q->a=(int *)malloc(q->size*sizeof(int));
     q->f=-1;
     q->r=-1;
