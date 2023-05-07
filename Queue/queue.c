@@ -15,17 +15,22 @@ int dequeue(queue *q);
 void display(queue *q);
 
 int main(){
-    queue *q;
+    queue *q=(queue *)malloc(sizeof(queue));
     q->size=100;
     q->a=(int *)malloc(q->size*sizeof(int));
     q->f=-1;
     q->r=-1;
-    enqueue(q,5);
-    enqueue(q,110);
-    enqueue(q,456);
+    enqueue(q,1);
+    enqueue(q,2);
+    enqueue(q,3);
+    dequeue(q);
     enqueue(q,4);
-    enqueue(q,6);
-    enqueue(q,65);
+    dequeue(q);
+    dequeue(q);
+    enqueue(q,5);
+    while(q->f<=q->r){
+        dequeue(q);
+    }
     //printf("%d",q->a[0]); //checking
     // printf("%d is dequeued\n",dequeue(q));
     // printf("%d is dequeued\n",dequeue(q));
@@ -78,6 +83,9 @@ int dequeue(queue *q){
         q->f++;
         printf("%d is dequeued\n",x);
 
+    }
+    else{
+        printf("queue underflow");
     }
 }
 void display(queue *q){

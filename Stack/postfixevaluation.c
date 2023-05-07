@@ -13,6 +13,7 @@ void push(stack *s, int x);
 int pop(stack *s);
 int postfixevaluation(char *postfix, stack *s);
  int isOperator(char ch);
+ int stacktop(stack *s);
 
 int main(){
     stack *s=(stack *)malloc(sizeof(stack));
@@ -23,7 +24,7 @@ int main(){
     // for(int i=0; postfix[i]!='\0'; i++){
     //     printf("%c\n",postfix[i]);
     // }
-    printf("%d is the postfixevaluation\n",postfixevaluation(postfix,s));
+    printf("%d is the postfixevaluation of %s\n",postfixevaluation(postfix,s),postfix);
     
     return 0;
 }
@@ -54,13 +55,16 @@ void push(stack *s, int x){
 }
 int pop(stack *s){
     if(!isEmpty(s)){
-    int x= s->top;
+    int x= s->a[s->top];
     s->top--;
     return x;
     }
     else{
         printf("stack underflow");
     }
+}
+int stacktop(stack *s){
+    return s->a[s->top];
 }
  int isOperator(char ch){
     if(ch=='+' || ch=='-' || ch=='*'|| ch=='/'){
@@ -72,14 +76,13 @@ int pop(stack *s){
  }
 int postfixevaluation(char *postfix, stack *s){
     int i=0;
- 
-
+    
     while(postfix[i]!='\0'){
         if(!isOperator(postfix[i])){
-            push(s,postfix[i]);
+            push(s,postfix[i]-'0'); //postfix[i] - '0' is used for getting digit rather than ASCII code of digit
             i++;
         }
-        else{
+        else{ 
             int op2,op1;
             int value;
 
@@ -101,12 +104,10 @@ int postfixevaluation(char *postfix, stack *s){
                     break;
             }
             push(s,value);
-           // printf("%d",s->a[s->top]);
             i++;
         
         }
     }
-    int x= pop(s);
-    return x;
+return stacktop(s);
     
 }

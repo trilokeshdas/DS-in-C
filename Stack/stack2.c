@@ -19,15 +19,19 @@ int main(){
     s->size=100;
     s->a=(int *)malloc(s->size*sizeof(int));
     s->top=-1;
-    push(s,5);
-    push(s,15);
-    push(s,25);
-    push(s,35);
-    push(s,45);
-    display(s);
+    push(s,1);
+    push(s,2);
     pop(s);
+    push(s,3);
+    push(s,4);
+    pop(s);
+    push(s,5);
+    while(!isEmpty(s)){
+        pop(s);
+    }
+    
     display(s);
-    printf("%d is the topmost element",peek(s));
+    //printf("%d is the topmost element",peek(s));
     return 0;
 }
 int isEmpty(stack *s){
@@ -57,7 +61,7 @@ void push(stack *s, int x){
     }
 }
 int pop(stack *s){
-    if(!isFull(s)){
+    if(!isEmpty(s)){
         int x=s->a[s->top];
         s->top--;
         printf("%d is poped\n",x);

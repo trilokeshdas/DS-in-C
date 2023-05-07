@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h>
 
 struct stack{
     int size;
@@ -8,30 +7,26 @@ struct stack{
     char *a;
 };
 typedef struct stack stack;
-
 int isEmpty(stack *s);
-int isFull(stack *s);
-void push(stack *s,char x);
-char pop(stack *s);
-int stacktop(stack *s);
-int precedence(char ch);
-int isOperator(char ch);
-char *infixtopostfix(char *infix, stack *s);
-
-
-
+int isfull(stack *s);
+void push(stack *s, int x);
+int pop(stack *s);
+int postfixevaluation(char *postfix, stack *s);
+ int isOperator(char ch);
+ int stacktop(stack *s);
 
 int main(){
     stack *s=(stack *)malloc(sizeof(stack));
     s->size=100;
     s->a=(char *)malloc(s->size*sizeof(char));
     s->top=-1;
-
-    char infix[100]="A+B*C";
-    printf("%s is the postfix expression", infixtopostfix(infix, s));
-
+    char postfix[100]="28-4+567*+*";
+    // for(int i=0; postfix[i]!='\0'; i++){
+    //     printf("%c\n",postfix[i]);
+    // }
+    printf("%d is the postfixevaluation of %s\n",postfixevaluation(postfix,s),postfix);
+    
     return 0;
-
 }
 int isEmpty(stack *s){
     if(s->top==-1){
@@ -49,80 +44,70 @@ int isFull(stack *s){
         return 0;
     }
 }
-void push(stack *s,char x){
+void push(stack *s, int x){
     if(!isFull(s)){
         s->top++;
         s->a[s->top]=x;
     }
     else{
-        printf("stack overflow\n");
+        printf("stack overflow");
     }
 }
-char pop(stack *s){
+int pop(stack *s){
     if(!isEmpty(s)){
-    char x=s->a[s->top];
+    int x= s->a[s->top];
     s->top--;
     return x;
-}else{
-    printf("stack underflow\n");
-  }
+    }
+    else{
+        printf("stack underflow");
+    }
 }
 int stacktop(stack *s){
-    if(!isEmpty){
-        return s->a[s->top];
+    return s->a[s->top];
+}
+ int isOperator(char ch){
+    if(ch=='+' || ch=='-' || ch=='*'|| ch=='/'){
+        return 1;
     }
     else{
         return 0;
     }
-}
-int isOperator(char ch){
-    if(ch=='+' || ch=='-' || ch=='*' || ch=='/' || ch=='^'){
-        return 1;
-    }else{
-        return 0;
-    }
-}
-int precedence(char ch){
-    if(ch=='+' || ch=='-'){
-        return 1;
-    }
-    else if(ch=='*' || ch=='/'){
-        return 2;
-    }
-    else if(ch=='^'){
-        return 3;
-    }
-    else{
-        return 0;
-    }
-}
-char *infixtopostfix(char *infix, stack *s){
-    char *postfix=(char *)malloc((strlen(infix)+1)*sizeof(char));
+ }
+int postfixevaluation(char *postfix, stack *s){
     int i=0;
-    int j=0;
-    while(infix[i]!='\0'){
-        if(!isOperator(infix[i])){
-            postfix[j]=infix[i];
+    
+    while(postfix[i]!='\0'){
+        if(!isOperator(postfix[i])){
+            push(s,postfix[i]-'0'); //ch - '0' is used for getting digit rather than ASCII code of digit
             i++;
-            j++;
         }
         else{
-            if(precedence(infix[i])>precedence(stacktop(s))){
-                    push(s,infix[i]);
-                    i++;
-            }
-            else{
-                postfix[j]=pop(s);
-                j++;
-            }
-            
+            int op2,op1;
+            int value;
 
+            op2=pop(s);
+            op1=pop(s);
+            
+            switch(postfix[i]){
+                case '+':
+                    value=op1+op2;
+                    break;
+                case '-':
+                    value=op1-op2;
+                    break;
+                case '*':
+                    value=op1*op2;
+                    break;
+                case '/':
+                    value=op1/op2;
+                    break;
+            }
+            push(s,value);
+            i++;
+        
         }
     }
-    while(!isEmpty(s)){
-        postfix[j]=pop(s);
-        j++;
-    }
-    postfix[j]='\0';
-    return postfix;
+return stacktop(s);
+    
 }
