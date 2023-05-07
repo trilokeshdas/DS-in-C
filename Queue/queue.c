@@ -31,6 +31,7 @@ int main(){
     while(q->f<=q->r){
         dequeue(q);
     }
+    dequeue(q);
     //printf("%d",q->a[0]); //checking
     // printf("%d is dequeued\n",dequeue(q));
     // printf("%d is dequeued\n",dequeue(q));
@@ -41,7 +42,7 @@ int main(){
     return 0;
 }
 int isEmpty(queue *q){
-    if(q->f==-1 && q->r==-1){
+    if((q->f==-1 && q->r==-1) || (q->f>q->r)){
         return 1;
     }
     else{
