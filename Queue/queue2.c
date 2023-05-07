@@ -37,6 +37,7 @@ int main(){
     dequeue(q);
     enqueue(q,6);
     dequeue(q);
+    dequeue(q);
     
     
      return 0;
