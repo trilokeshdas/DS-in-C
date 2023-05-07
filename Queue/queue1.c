@@ -16,7 +16,7 @@ void display(queue *q);
 
 int main(){
     queue *q=(queue *)malloc(sizeof(queue));
-    q->size=100;
+    q->size=5;
     q->a=(int *)malloc(q->size*sizeof(int));
     q->f=-1;
     q->r=-1;
@@ -32,6 +32,7 @@ int main(){
         dequeue(q);
     }
     dequeue(q);
+    enqueue(q,6);
     //printf("%d",q->a[0]); //checking
     // printf("%d is dequeued\n",dequeue(q));
     // printf("%d is dequeued\n",dequeue(q));
@@ -49,7 +50,7 @@ int isEmpty(queue *q){
     }
 }
 int isFull(queue *q){
-    if(q->f==0 && q->r==q->size-1){
+    if( q->r==q->size-1){
         return 1;
     }
     else{
