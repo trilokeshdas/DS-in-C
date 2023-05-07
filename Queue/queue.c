@@ -35,10 +35,6 @@ int main(){
     // printf("%d is dequeued\n",dequeue(q));
     // printf("%d is dequeued\n",dequeue(q));
     //dequeue(q);
-    printf("now traversing\n");
-    display(q);
-    dequeue(q);
-    display(q);
 
     
 
