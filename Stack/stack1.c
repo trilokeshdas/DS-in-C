@@ -42,7 +42,7 @@ int isEmpty(stack *s){
     }
 }
 int isFull(stack *s){
-    if(s->top==size){
+    if(s->top==size-1){
         return 1;
     }
     else{

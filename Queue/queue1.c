@@ -16,7 +16,7 @@ void display(queue *q);
 
 int main(){
     queue *q=(queue *)malloc(sizeof(queue));
-    q->size=5; // take the size as the no. of times we will enqueue
+    q->size=7; // take the size as the no. of times we will enqueue
     q->a=(int *)malloc(q->size*sizeof(int));
     q->f=-1;
     q->r=-1;
@@ -33,6 +33,13 @@ int main(){
     }
     dequeue(q);
     enqueue(q,6);
+    dequeue(q);
+    dequeue(q);
+    dequeue(q);
+    enqueue(q,7);
+    dequeue(q);
+    enqueue(q,8);
+    
    
     //printf("%d",q->a[0]); //checking
     // printf("%d is dequeued\n",dequeue(q));
@@ -69,6 +76,9 @@ void enqueue(queue *q, int x){
         q->r++;
         q->a[q->r]=x;
         printf("%d is enqueued\n",x);
+        }
+        if(q->f>q->r){
+            q->f--;
         }
     }
     else{
