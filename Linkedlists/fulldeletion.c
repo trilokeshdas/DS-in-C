@@ -42,7 +42,7 @@ int main(){
 }
 void display(node *ptr){
     while(ptr!=NULL){
-    printf("%d\t",ptr->data);
+    printf("%d ",ptr->data);
     ptr=ptr->next;
     }
     printf("\n");

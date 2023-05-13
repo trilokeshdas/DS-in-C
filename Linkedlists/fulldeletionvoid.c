@@ -45,7 +45,7 @@ void display(){
     node *ptr=(node *)malloc(sizeof(node));
     ptr=head;
     while(ptr!=NULL){
-    printf("%d\t",ptr->data);
+    printf("%d ",ptr->data);
     ptr=ptr->next;
     }
     printf("\n");
