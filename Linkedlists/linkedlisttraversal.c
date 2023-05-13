@@ -8,6 +8,7 @@ struct node{
 
 void display(struct node *ptr);
 
+
 int main(){
     struct node* head; // struct node* type pointer structure to allocate memory in the heap
     struct node* second;
