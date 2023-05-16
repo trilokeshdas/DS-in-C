@@ -10,7 +10,8 @@ typedef struct node node;
  node* head = NULL;
 
 // Function to create a new node
-void createNode(int x);
+//void createNode(int x); for creating a particular node 
+void createlist(int size); // for creating a list of nodes. it takes actually the number updto which the list is to be created
 void insertbeg(int x);
 void insertend(int x);
 void insertatmid(int prevvalue,int nextvaalue,int value);
@@ -20,10 +21,11 @@ void display();
 
 int main(){
     
-    createNode(3);
-    createNode(2);
-    createNode(1);
-    display();
+    // createNode(3);
+    // createNode(2);
+    // createNode(1);
+    // display();
+    createlist(3);
     insertbeg(4);
     //display();
     insertend(5);
@@ -116,9 +118,33 @@ void insertafter( int aftvalue,int value){
     display();
     
 }
-void createNode(int x) {
-    node* newNode = (node*)malloc(sizeof(node));
-    newNode->data = x;
-    newNode->next = head;
-    head=newNode;
+// void createNode(int x) {
+//     node* newNode = (node*)malloc(sizeof(node));
+//     newNode->data = x;
+//     newNode->next = head;
+//     head=newNode;
+// }
+void createlist(int size){
+    int x=1;
+    for(int i=0; i<size; i++){
+        if(head==NULL){
+            node *newnode=(node *)malloc(sizeof(node));
+            newnode->data=x;
+            newnode->next=head;
+            head=newnode;
+        }
+        else{
+          node *p1=(node *)malloc(sizeof(node));   //basically this is insertion at end code segment but we are not
+    node *p=(node *)malloc(sizeof(node));          // calling it in this function because after calling createlist in the main
+    p1=head;                                       // main function it will display multiple times bacause display 
+    p->data=x;                                   // function is called in insertion end function
+    while(p1->next!=NULL){
+        p1=p1->next;
+    }
+    p1->next=p;
+    p->next=NULL;
+    }
+        x++;
+    }
+    display();
 }
