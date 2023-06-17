@@ -13,12 +13,11 @@ void push(stack *s, int x);
 int pop(stack *s);
 void display(stack *s);
 int peek(stack *s);
+void create(stack *s);
 
 int main(){
     stack *s=(stack *)malloc(sizeof(stack));
-    s->size=100;
-    s->a=(int *)malloc(s->size*sizeof(int));
-    s->top=-1;
+    create(s);
     push(s,1);
     push(s,2);
     pop(s);
@@ -77,4 +76,9 @@ void display(stack *s){
 }
 int peek(stack *s){
     return s->a[s->top];
+}
+void create(stack *s){
+    s->top=-1;
+    s->size=100;
+    s->a=(int *)malloc(s->size*sizeof(int));
 }

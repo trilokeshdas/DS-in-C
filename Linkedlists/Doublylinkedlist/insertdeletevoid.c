@@ -20,9 +20,9 @@ int main(){
     createlist(4);
     insertbeg(5);
     insertend(6);
-    insertbetween(2,3,7);
     deletebeg();
     deleteend();
+    insertbetween(2,3,7);
     deleteanyval(7);
     return 0;
 }
@@ -66,6 +66,7 @@ void insertbeg(int x){
     p->data=x;
     p->next=head;
     p->prev=NULL;
+    head->prev=p;
     head=p;
     display();
 }
