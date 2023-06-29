@@ -7,5 +7,6 @@
         "cwchar": "c",
         "cwctype": "c",
         "cstdint": "c"
-    }
+    },
+    "code-runner.saveAllFilesBeforeRun": true
 }
