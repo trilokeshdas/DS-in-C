@@ -6,7 +6,7 @@
     int arr[80]; //array of any size
 }; 
 typedef struct stack s;
-int isEmpty(s stack);
+int isEmpty(s stack);`
 int isFull(s stack);
 void push(int x, s stack);
 int  pop(s stack);
