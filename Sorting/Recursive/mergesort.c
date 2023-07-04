@@ -27,7 +27,7 @@ void merge(int *a, int lb, int mid, int ub){
     j=mid+1;
     k=lb;
     while(i<=mid && j<=ub){
-        if(a[i]<a[j]){
+        if(a[i]<=a[j]){
             b[k]=a[i];
             i++;
             k++;
