@@ -1,32 +1,30 @@
 #include <stdio.h>
 
-#define SIZE 10 // Size of the hash table
+#define SIZE 10 
 
 int hashFunction(int key) {
-    return key % SIZE; // Simple modulo hashing
+    return key % SIZE; 
 }
 
 void insert(int hashTable[], int key) {
-    int index = hashFunction(key); // Get the index using the hash function
+    int index = hashFunction(key); 
     
-    // Linear probing to handle collisions
     while (hashTable[index] != -1) {
-        index = (index + 1) % SIZE; // Move to the next index
+        index = (index + 1) % SIZE; 
     }
     
-    hashTable[index] = key; // Insert the key into the hash table
+    hashTable[index] = key;
 }
 
 void search(int hashTable[], int key) {
-    int index = hashFunction(key); // Get the index using the hash function
+    int index = hashFunction(key); 
     
-    // Linear probing to handle collisions
     while (hashTable[index] != -1) {
         if (hashTable[index] == key) {
             printf("Key %d found at index %d\n", key, index);
             return;
         }
-        index = (index + 1) % SIZE; // Move to the next index
+        index = (index + 1) % SIZE; 
     }
     
     printf("Key %d not found in the hash table\n", key);
@@ -44,21 +42,21 @@ void displayHashTable(int hashTable[]) {
 int main() {
     int hashTable[SIZE];
 
-    // Initialize the hash table with -1 (indicating empty slot)
     for (int i = 0; i < SIZE; i++) {
         hashTable[i] = -1;
     }
 
+
+    insert(hashTable, 10);
+    insert(hashTable, 70);
+    insert(hashTable, 32);
+    insert(hashTable, 73);
+    insert(hashTable, 26);
+    insert(hashTable, 52);
+    insert(hashTable, 88);
     insert(hashTable, 12);
-    insert(hashTable, 25);
-    insert(hashTable, 35);
-    insert(hashTable, 45);
-    insert(hashTable, 55);
-    
+
     displayHashTable(hashTable);
-    
-    search(hashTable, 35);
-    search(hashTable, 40);
     
     return 0;
 }

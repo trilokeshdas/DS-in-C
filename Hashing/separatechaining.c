@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SIZE 10 // Size of the hash table
+#define SIZE 10
 
 struct Node {
     int key;
@@ -61,28 +61,21 @@ void displayHashTable(struct Node* hashTable[]) {
 int main() {
     struct Node* hashTable[SIZE];
 
-    // Initialize hash table with NULL
     for (int i = 0; i < SIZE; i++) {
         hashTable[i] = NULL;
     }
 
-    insert(hashTable, 12);
-    insert(hashTable, 22);
+    insert(hashTable, 10);
+    insert(hashTable, 70);
     insert(hashTable, 32);
-    insert(hashTable, 42);
+    insert(hashTable, 73);
+    insert(hashTable, 26);
     insert(hashTable, 52);
-    insert(hashTable, 62);
-    insert(hashTable, 72);
-    insert(hashTable, 82);
-    insert(hashTable, 92);
-    insert(hashTable, 102);
-    insert(hashTable, 112);
+    insert(hashTable, 88);
+    insert(hashTable, 12);
 
     displayHashTable(hashTable);
 
-    search(hashTable, 32);
-    search(hashTable, 42);
-    search(hashTable, 55);
 
     return 0;
 }
