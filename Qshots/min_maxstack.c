@@ -20,9 +20,9 @@ int main(){
     stack *s1=(stack *)malloc(sizeof(stack));
     create(s1);
     push(s1,1);
-    push(s1,2);
+    push(s1,10);
     push(s1,3);
-    push(s1,4);
+    push(s1,-27);
     maxmin(s1);
     return 0;
 }
