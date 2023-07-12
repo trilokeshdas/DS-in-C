@@ -57,7 +57,7 @@ void enqueue(queue *q, int x){
             q->f++;
             q->r++;
             q->a[q->r]=x;
-             printf("%d is enqueued\n",x);
+             printf("%d is pushed\n",x);
         }else{
         q->r++;
         q->a[q->r]=x;
@@ -68,7 +68,7 @@ void enqueue(queue *q, int x){
         }
     }
     else{
-        printf("Queue overflow\n");
+        printf("Stack overflow\n");
     }
 }
 int dequeue(queue *q){
