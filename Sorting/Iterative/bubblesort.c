@@ -9,8 +9,7 @@ int main(){
     bubblesort(a,n);
     return 0;
 }
-void display(int *a, int n){
-     
+void display(int *a, int n){  
   for(int i=0; i<n; i++){
     printf("%d ",a[i]);
   }

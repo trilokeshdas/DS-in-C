@@ -15,7 +15,7 @@ int main(){
 }
 int lsrecurssive(int *a, int x, int indx, int n){
     int pos=0;
-    if(indx>n){
+    if(indx>=n){
         return 0;
     }
     else if(a[indx]==x){
