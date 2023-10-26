@@ -2,8 +2,8 @@
 #include<stdlib.h>
 int lsrecurssive(int *a, int x, int indx, int n);
 int main(){
-    int a[10]={1,2,5,7,8};
-    int n=10;
+    int a[5]={1,2,5,7,8};
+    int n=5;
     int pos=lsrecurssive(a,8,0,n);
     if(pos==0){
         printf("not found");
